@@ -1,0 +1,58 @@
+<div class="wrap">
+	<div class="formwrap">
+		<form name="adminform" class="formset" method="post" action="{:U('Admin/addadmin')}">
+			<div class="item">
+				<label class="itemtip">用户名：</label>
+				<div class="itemcontent">
+					<input type="text" name="username" class="inputtext" />
+				</div>
+			</div>
+			<div class="item">
+				<label class="itemtip">密码：</label>
+				<div class="itemcontent">
+					<input type="password" name="password" class="inputtext" />
+				</div>
+			</div>
+			<div class="item">
+				<label class="itemtip">重复密码：</label>
+				<div class="itemcontent">
+					<input type="password" name="repassword" class="inputtext" />
+				</div>
+			</div>
+			<div class="item">
+				<label class="itemtip">小编姓名：</label>
+				<div class="itemcontent">
+					<input type="text" name="realname" class="inputtext" />
+				</div>
+			</div>
+			<div class="item">
+				<label class="itemtip">email：</label>
+				<div class="itemcontent">
+					<input type="text" name="email" class="inputtext" />
+				</div>
+			</div>
+			<div class="item">
+				<label class="itemtip">昵称：</label>
+				<div class="itemcontent">
+					<input type="text" name="nickname" class="inputtext" />
+				</div>
+			</div>
+			<div class="item">
+				<label class="itemtip">权限组：</label>
+				<div class="itemcontent">
+					<select class="selectlist" name="priv_set_id">
+						<option value="0">暂时不选</option>
+						<volist name="privsets" id="v">
+							<option value="{$v.id}">{$v.name}</option>
+						</volist>
+					</select>
+				</div>
+			</div>
+			<div class="item buttonline">
+				<div class="itemcontent">
+					<input type="submit" name="Submit" value="提交" />
+				</div>
+			</div>
+		</form>
+	</div>
+</div>

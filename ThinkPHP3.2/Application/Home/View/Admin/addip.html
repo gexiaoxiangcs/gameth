@@ -1,0 +1,24 @@
+<div class="wrap">
+	<div class="formwrap">
+		<form name="adminform" class="formset" method="post" action="{:U('Admin/saveip')}">
+			<input type="hidden" value="1" name="type" />
+			<div class="item">
+				<label class="itemtip">IP：</label>
+				<div class="itemcontent">
+					<input type="text" name="ip" class="inputtext" />
+				</div>
+			</div>
+			<div class="item">
+				<label class="itemtip">过期时间：</label>
+				<div class="itemcontent">
+					<input type="text" name="expire" class="inputtext" value="{$expire}" />
+				</div>
+			</div>
+			<div class="item buttonline">
+				<div class="itemcontent">
+					<input type="submit" name="Submit" value="提交" />
+				</div>
+			</div>
+		</form>
+	</div>
+</div>

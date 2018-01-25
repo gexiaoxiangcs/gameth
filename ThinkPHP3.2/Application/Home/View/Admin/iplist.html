@@ -1,0 +1,41 @@
+<div class="wrap">
+	<div class="topnav">
+		<a href="{:U('Admin/addip')}" target="_self">增加ip</a>
+	</div>
+	<div class="funnylist itemlist">
+		<table class="funnytablelist list">
+			<tr>
+				<td width="35%" class="narrow">ip</td>
+				<td width="9%">过期时间</td>
+				<td width="9%">创建时间</td>
+				<td>操作</td>
+			</tr>
+			<volist name="ips" id="v">
+				<tr id="ip{$v.id}">
+					<td>{$v.ip}</td>
+					<td class="narrow">{$v.expire|date='Y-m-d',###}</td>
+					<td class="narrow">{$v.addtime|date='Y-m-d',###}</td>
+					<td>
+						<a ipid="{$v.id}" href="#" class="deletebtn">删除</a>
+					</td>
+				</tr>
+			</volist>
+		</table>
+	</div>
+	<script type="text/javascript">
+		(function(){
+			$('.deletebtn').click(function(){
+				if(!confirm('确定删除？')){
+					return false;
+				}
+				var ipid = $(this).attr('ipid');
+				$.get('{:U("Admin/deleteip?id=")}' + ipid, function(data){
+					if(data.success){
+						$('#ip' + ipid).remove();
+					}
+				});
+				return false;
+			});
+		})();
+	</script>
+</div>

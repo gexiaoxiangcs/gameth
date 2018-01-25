@@ -1,0 +1,23 @@
+<div class="wrap">
+	<include file="Admin/privtop" />
+	<div class="funnylist itemlist">
+		<table class="funnytablelist list">
+			<tr>
+				<td width="10%">权限组id</td>
+				<td width="10%">名称</td>
+				<td width="50%">权限集合</td>
+				<td width="10%">操作</td>
+			</tr>
+			<volist name="groups" id="v">
+				<tr>
+					<td>{$v.id}</td>
+					<td>{$v.name}</td>
+					<td>{$v.privs|str_replace=',','，',###}</td>
+					<td>
+						<a href="{:U('Admin/editPrivSet?sid=')}{$v.id}" class="modifybtn">修改</a>
+					</td>
+				</tr>
+			</volist>
+		</table>
+	</div>
+</div>

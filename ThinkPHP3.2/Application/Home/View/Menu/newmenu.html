@@ -1,0 +1,32 @@
+<div class="wrap">
+	<div class="formwrap">
+		<form name="menuform" class="formset" method="post" action="{:U('Admin/addadmin')}">
+			<div class="line">
+				<label class="tip">上级菜单：</label>
+				<div class="content">
+					<select name="parent_id">
+						<option value="0">无上级</option>
+						{$menuoptions}
+					</select>
+				</div>
+			</div>
+			<div class="line">
+				<label class="tip">菜单名：</label>
+				<div class="content">
+					<input type="text" name="name" class="inputtext" />
+				</div>
+			</div>
+			<div class="line">
+				<label class="tip">菜单地址：</label>
+				<div class="content">
+					<input type="text" name="url" class="inputtext" />
+				</div>
+			</div>
+			<div class="line">
+				<div class="content">
+					<input type="submit" name="Submit" value="提交" />
+				</div>
+			</div>
+		</form>
+	</div>
+</div>

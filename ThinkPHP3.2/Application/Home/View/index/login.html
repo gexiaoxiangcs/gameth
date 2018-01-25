@@ -1,0 +1,70 @@
+<div class="wrap">
+	<form action="{:U('Index/loginverify')}" method="post">
+		<div class="loginwrap">
+			<div class="formline">
+				<div class="leftname">用户名：</div>
+				<div class="rightcontent"><input type="text" id="username" name="username" class="inputtext" /></div>
+			</div>
+			<div class="formline">
+				<div class="leftname">密码：</div>
+				<div class="rightcontent"><input type="password" id="password" name="password" class="inputtext" /></div>
+			</div>
+			<div class="formline">
+				<div class="leftname">验证码：</div>
+				<div class="rightcontent" style="width: 310px;">
+					<input style="width: 40px;" size="4" type="text" name="verifycode" class="inputtext" />&nbsp;
+					<if condition="$outsidecompany eq 1">
+					<input type="hidden" id="verifycoderandnum" name="verifycoderandnum" />
+					<p>
+						<input type="button" id="sendsms" name="sendsms" value="发送验证码" />
+						<span style="display:none;" id="smscode">验证码已发送(120秒内不能重复发送)</span>
+						<br /><span style="color:red;font-size:11px;">(检测到非公司网络，需要使用短信验证码，如为公司网络请联系管理员)</span>
+					</p>
+					<else/>
+					<img src="{:U('Index/verifycode')}" height="30" id="verifyimg" />
+					</if>
+				</div>
+			</div>
+			<div class="formline" style="text-align: center;">
+				<input type="submit" name="submitbtn" value="提交" />
+			</div>
+		</div>
+	</form>
+</div>
+<script type="text/javascript">
+	$('#verifyimg').click(function(){
+		var $this = $(this);
+		$(this).attr('src', '{:U("Index/verifycode?r=")}' + Math.random());
+		return false;
+	});
+	$('#sendsms').click(function(){
+		var $this = $(this), username = $('#username').val(), password = $('#password').val();
+		if(!username){
+			alert('请输入用户名');
+			return false;
+		}
+		if(!password){
+			alert('请输入密码');
+			return false;
+		}
+		$('#verifycoderandnum').val(Math.random());
+		var params = {
+			'username' : username,
+			'password' : password,
+			'coderandnum' : $('#verifycoderandnum').val()
+		};
+		$.post('{:U("Index/sendSmsVerifyCode")}', params, function(params){
+			if(typeof params == 'object' && params.msg){
+				alert(params.msg);
+			}
+			if(typeof params == 'object' && params.code == '200'){
+				$('#smscode').show();
+				$this.hide();
+				setTimeout(function(){
+					$('#smscode').hide();
+					$this.show();
+				}, 120000);
+			}
+		});
+	});
+</script>

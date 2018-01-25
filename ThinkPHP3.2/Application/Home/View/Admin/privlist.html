@@ -1,0 +1,25 @@
+<div class="wrap">
+	<include file="Admin/privtop" />
+	<div class="funnylist itemlist">
+		<table class="funnytablelist list">
+			<tr>
+				<td width="10%">权限名称</td>
+				<td width="25%">权限编码</td>
+				<td width="5%">组别</td>
+				<td width="40%">权限说明</td>
+				<td width="10%">操作</td>
+			</tr>
+			<volist name="privs" id="v">
+				<tr id="{$v.priv_code}">
+					<td>{$v.name}</td>
+					<td>{$v.priv_code}</td>
+					<td>{$v.gid}</td>
+					<td>{$v.intro}</td>
+					<td>
+						<a href="{:U('Admin/editPriv?priv_code=')}{$v.priv_code}" class="modifybtn">修改</a>
+					</td>
+				</tr>
+			</volist>
+		</table>
+	</div>
+</div>

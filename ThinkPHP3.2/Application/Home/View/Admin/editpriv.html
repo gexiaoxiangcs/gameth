@@ -1,0 +1,36 @@
+<div class="wrap">
+	<include file="Admin/privtop" />
+	<div class="formwrap">
+		<form name="adminform" class="formset" method="post" action="{:U('Admin/savePriv')}">
+			<div class="item">
+				<label class="itemtip">编码：</label>
+				<div class="itemcontent">
+					<input name="priv_code" class="inputtext" type="text" value="{$privinfo.priv_code}">
+				</div>
+			</div>
+			<div class="item">
+				<label class="itemtip">名称：</label>
+				<div class="itemcontent">
+					<input type="text" name="name" class="inputtext" value="{$privinfo.name}" />
+				</div>
+			</div>
+			<div class="item">
+				<label class="itemtip">组别：</label>
+				<div class="itemcontent">
+					<input type="text" name="gid" class="inputtext" value="{$privinfo.gid}" />
+				</div>
+			</div>
+			<div class="item">
+				<label class="itemtip">说明：</label>
+				<div class="itemcontent">
+					<textarea id="intro" name="intro" class="introtext">{$privinfo.intro}</textarea>
+				</div>
+			</div>
+			<div class="item buttonline">
+				<div class="itemcontent">
+					<input type="submit" name="Submit" value="提交" />
+				</div>
+			</div>
+		</form>
+	</div>
+</div>

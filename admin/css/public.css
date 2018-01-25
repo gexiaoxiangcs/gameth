@@ -1,0 +1,325 @@
+body *{
+    font-size: 14px;
+}
+a{
+    text-decoration: none;
+    color: #009bfe;
+}
+a:hover{
+    color:#0000aa;
+}
+input.input_text, input.inputtext, textarea.textareacontent, textarea.introtext, select {
+    border: 1px solid #cfcfcf;
+    border-radius: 3px;
+}
+input.input_text, input.inputtext{
+    font-size: 14px;
+    height: 25px;
+    line-height: 25px;
+    width: 350px;
+    padding: 0 5px;
+}
+textarea.textareacontent, textarea.introtext{
+    padding:3px 5px;
+}
+input.input_text:focus, input.inputtext:focus, textarea.textareacontent:focus, textarea.introtext:focus{
+    border-color:#5b9dd9;
+    box-shadow: 0 0 2px rgba(30, 140, 190, 0.8);
+}
+input[type=submit], input[type=button], input.submitbtn, a.submitbtn{
+    height: 30px;
+    line-height: 28px;
+    padding: 0 12px 2px;
+    background: #00a0d2 none repeat scroll 0 0;
+    border-color: #0073aa;
+    box-shadow: 0 1px 0 rgba(120, 200, 230, 0.5) inset, 0 1px 0 rgba(0, 0, 0, 0.15);
+    color: #fff;
+    text-decoration: none;
+    border-radius: 3px;
+    border-style: solid;
+    border-width: 1px;
+    box-sizing: border-box;
+    cursor: pointer;
+    display: inline-block;
+    font-size: 13px;
+}
+input[type=file]{
+    background: #ffccff none repeat scroll 0 0;
+    border-radius: 3px;
+    padding: 0 3px 0 0;
+}
+.leftlayoutwrap{
+    padding-top: 20px;
+    height: 100%;
+    width: 300px;
+    border-right: 1px solid #bcbcbc;
+    position: absolute;
+    top: 0;
+}
+.leftmenu{
+    height: 100%;
+    border: none;
+    width: 270px;
+}
+.leftwrap{
+    line-height: 28px;
+}
+.leftwrap ul{
+    margin: 0;
+    padding:0 0 0 20px;
+}
+.layoutmain{
+    position: absolute;
+    right: 0;
+    left: 320px;
+    top: 0;
+    height: 100%;
+    padding-top: 5px;
+}
+.contentarea{
+    height: 100%;
+    width: 100%;
+    border: none;
+}
+td{
+    word-break: break-all;
+}
+.loginwrap{
+    margin: 40px auto auto;
+    width: 500px;
+}
+.loginwrap .formline{
+    height: 27px;
+    margin: auto;
+    margin-bottom: 15px;
+    width: 400px;
+    clear: both;
+}
+.loginwrap .formline .leftname{
+    float: left;
+    width: 80px;
+}
+.loginwrap .formline .rightcontent{
+    float: left;
+}
+.loginwrap .formline .rightcontent .inputtext{
+    width: 200px;
+}
+#verifyimg {
+    vertical-align: middle;
+    height: 27px;
+}
+textarea.textareacontent, textarea.introtext{
+    width:820px;
+    height: 167px;
+}
+.dataitem {
+    clear: both;
+    position: relative;
+    float: left;
+    margin-top: 15px;
+}
+.dataitem > div{
+    margin-top:7px;
+}
+.dataitem .itemlabel{
+    clear: both;
+}
+.dataitem .itemlabel .questionmark{
+    cursor: pointer;
+}
+.dataitem .itemlabel .inputtext{
+    width:100px;
+}
+.dataitem .itemcontent {
+    clear: left;
+    float: left;
+}
+.dataitem .itembtn{
+    margin-left: 10px;
+    float: left;
+}
+.dataitem .itemtip{
+    position: absolute;
+    z-index: 1000;
+    display: none;
+    background: #fff;
+}
+.dataitem .itemtip pre{
+    border: 1px solid #cfcfcf;
+    padding: 5px;
+    height: 100%;
+    margin: 0;
+}
+.wrap{
+
+}
+.wrap .topnav{
+    margin-bottom: 20px;
+    background: #efefef;
+    clear: both;
+    float: right;
+    padding-left:30px;
+    width: 100%;
+}
+.wrap .topnav a{
+    text-decoration: none;
+    height: 28px;
+    line-height: 28px;
+    cursor: pointer;
+    font-size: 16px;
+    display: block;
+    float: right;
+    margin-right: 20px;
+    color:#00aa00;
+}
+.wrap .topnav a:hover{
+    color:#000099;
+}
+.wrap .categories{
+    clear: both;
+    float: left;
+    margin-bottom: 15px;
+    width: 98%;
+}
+.wrap .categories .publishall{
+    float:right;
+}
+.wrap .itemlist{
+    clear: both;
+    float:left;
+    width: 100%;
+    margin-bottom: 15px;
+}
+.wrap table.list{
+    border-left:1px solid #10e111;
+    border-top:1px solid #10e111;
+    border-spacing:0;
+    width: 100%;
+}
+.wrap table tr:nth-child(2n){
+    background: #efefef;
+}
+.wrap table tr:hover{
+    background: #606060;
+    color:#ffffff;
+}
+.wrap table tr:hover a{
+    color:#ffffff;
+}
+.wrap table.list td{
+    border-right:1px solid #10e111;
+    border-bottom:1px solid #10e111;
+    padding: 6px 8px;
+    position: relative;
+}
+.wrap table.list td.narrow{
+    padding: 6px 5px;
+}
+.wrap table.list .btn{
+    padding:0 5px;
+}
+.wrap table.list td.nopublish{
+    color:red;
+}
+.wrap .pagelist{
+    clear:both;
+    text-align: center;
+    margin: 10px 0;
+}
+.wrap .pagelist a, .wrap .pagelist span{
+    line-height: 26px;
+    padding:0 5px;
+}
+.wrap .pagelist a{
+    font-size:18px;
+    color:#0000ff;
+    margin-left:5px;
+    margin-right:5px;
+}
+.wrap .pagelist a:hover{
+    color:#00aaff;
+}
+.wrap .pagelist span{
+    font-size:16px;
+    color:#a0ca6f;
+}
+.formwrap{
+    clear: both;
+    position: relative;
+}
+.formwrap .item{
+    float: left;
+    clear: both;
+    margin-bottom: 20px;
+}
+.formwrap .item .itemtip{
+    display: block;
+    width: 120px;
+    text-align: right;
+    padding-right: 10px;
+    float: left;
+}
+.formwrap .item .itemcontent{
+    float: left;
+    max-width: 850px;
+}
+.formwrap .item .itemcontent .imgitem{
+    float:left;
+    position: relative;
+    width:220px;
+    text-align: center;
+    padding:5px;
+    margin: 0 5px 10px 0;
+    border: 1px solid #cfcfcf;
+    height: 210px;
+}
+.formwrap .item .itemcontent .imgitem img{
+    text-align: center;
+}
+.formwrap .item .itemcontent .imgitem .picname{
+    word-break: break-all;
+}
+.formwrap .item .itemcontent .imgitem .input_text{
+    width:130px;
+}
+.formwrap .item .itemcontent .imgitem .imgdel{
+    float: left;
+    position: absolute;
+    font-size: 18px;
+    right: 3px;
+    top:0px;
+    line-height: 10px;
+    cursor: pointer;
+}
+.formwrap .item .itemcontent .imgitem img{
+    max-height: 100px;
+}
+.formwrap .item .itemcontent .imgitem .upload_progress {
+    background-color: rgba(0, 0, 0, 0.6);
+    border-radius: 10px;
+    color: #fff;
+    display: none;
+    left: 25px;
+    padding: 5px;
+    position: absolute;
+    top: 45px;
+}
+.formwrap .buttonline{
+        padding-left: 800px;
+}
+.formwrap .rightwrap{
+    padding-left:120px;
+    clear: both;
+    float: left;
+}
+.formwrap .rightwrap .picitem{
+    margin-top:15px;
+}
+.formwrap .spanfronttip, .formwrap .spantip{
+    font-size: 11px;
+    color:#008800;
+}
+.maxheight{
+    max-height: 150px;
+}

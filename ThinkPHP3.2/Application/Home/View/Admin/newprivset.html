@@ -1,0 +1,54 @@
+<div class="wrap">
+	<include file="Admin/privtop" />
+	<div class="formwrap">
+		<form name="adminform" class="formset" method="post" action="{:U('Admin/addPrivSet')}">
+			<div class="item">
+				<label class="itemtip">名称：</label>
+				<div class="itemcontent">
+					<input type="text" name="name" class="inputtext" />
+				</div>
+			</div>
+			<div class="item">
+				<label class="itemtip">权限：</label>
+				<div class="itemcontent">
+					<textarea readonly="readonly" id="privset" name="privs" class="introtext">{$setinfo.privs|str_replace=',',"\\n",###}</textarea>
+				</div>
+			</div>
+			<div class="item">
+				<label class="itemtip">权限选择：</label>
+				<div class="itemcontent">
+					<p>
+					<php>
+					$i = 1;
+					foreach($privs as $v){
+						if($v['gid'] == 1){
+							continue;
+						}
+						if($i != $v['gid']){
+							$i = $v['gid'];
+							echo "</p><p>";
+						}
+						echo sprintf('<input type="checkbox" class="privselect" name="privselect[]" value="%s" />%s&nbsp;&nbsp;', $v['priv_code'], $v['name']);
+					}
+					</php>
+				</p>
+				</div>
+			</div>
+			<div class="item buttonline">
+				<div class="itemcontent">
+					<input type="submit" name="Submit" value="提交" />
+				</div>
+			</div>
+		</form>
+	</div>
+</div>
+<script type="text/javascript">
+	$('.privselect').click(function(){
+		var $this = $(this), $privset = $('#privset'), privs = $privset.val();
+		privs = privs.replace($this.val(), '');
+		if($this[0].checked == true){
+			privs += "\n" + $this.val();
+		}
+		$privset.val($.trim(privs.replace("\n\n", "\n")));
+	});
+</script>

@@ -1,0 +1,75 @@
+<div class="wrap">
+	<div class="formwrap">
+		<form name="adminform" class="formset" method="post" action="{:U('Admin/updateadmin')}">
+			<input type="hidden" name="id" value="{$admininfo.id}" />
+			<div class="item">
+				<label class="itemtip">密码：</label>
+				<div class="itemcontent">
+					<input type="password" name="password" class="inputtext" /> <span class="smalltip">(留空表示不更改密码)</span>
+				</div>
+			</div>
+			<div class="item">
+				<label class="itemtip">重复密码：</label>
+				<div class="itemcontent">
+					<input type="password" name="repassword" class="inputtext" />
+				</div>
+			</div>
+			<div class="item">
+				<label class="itemtip">小编姓名：</label>
+				<div class="itemcontent">
+					<input type="text" name="realname" class="inputtext" value="{$admininfo.realname}" />
+				</div>
+			</div>
+			<div class="item">
+				<label class="itemtip">email：</label>
+				<div class="itemcontent">
+					<input type="text" name="email" class="inputtext" value="{$admininfo.email}" />
+				</div>
+			</div>
+			<div class="item">
+				<label class="itemtip">昵称：</label>
+				<div class="itemcontent">
+					<input type="text" name="nickname" class="inputtext" value="{$admininfo.nickname}" />
+				</div>
+			</div>
+			<div class="item">
+				<label class="itemtip">电话：</label>
+				<div class="itemcontent">
+					<input type="text" name="phone" class="inputtext" value="{$admininfo.phone}" />
+					<span class="smalltip">填写电话，就会开启发送sms验证码功能。</span>
+				</div>
+			</div>
+			<div class="item">
+				<label class="itemtip">权限组：</label>
+				<div class="itemcontent">
+					<select class="selectlist" name="priv_set_id">
+						<option value="0">暂时不选</option>
+						<volist name="privsets" id="v">
+							<option <if condition="$admininfo['priv_set_id'] == $v['id']">selected="selected"</if> value="{$v.id}">{$v.name}</option>
+						</volist>
+					</select>
+				</div>
+			</div>
+			<div class="item">
+				<label class="itemtip">权限：</label>
+				<div class="itemcontent">
+					<?php
+					$i = 1;
+					foreach($privs as $v){
+						if($i != $v['gid']){
+							$i = $v['gid'];
+							echo "<br />";
+						}
+						echo sprintf('<input type="checkbox" name="privs[]" value="%s" %s />%s&nbsp;&nbsp;', $v['priv_code'], in_array($v['priv_code'], $adminprivs) ? 'checked="checked"' : '', $v['name']);
+					}
+					?>
+				</div>
+			</div>
+			<div class="item buttonline">
+				<div class="itemcontent">
+					<input type="submit" name="Submit" value="提交" />
+				</div>
+			</div>
+		</form>
+	</div>
+</div>
