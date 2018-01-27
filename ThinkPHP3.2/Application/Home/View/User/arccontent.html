@@ -1,0 +1,89 @@
+<div class="wrap datawrap">
+	<div class="formwrap">
+		<form class="dryhumorform" action="{:U('User/arccontent')}" method="post">
+			<input name="id" type="hidden" value="{$content.id|default=0}" />
+			<div class="item">
+				<div class="itemtip">加V认证信息</div>
+				<div class="itemcontent">
+                    <input type="hidden" name="uid" value="{$content.uid}">
+					<input class="inputtext" name="vip" value="{$content.vip|default=''}" type="text" />
+				</div>
+			</div>
+
+            <div class="item">
+                <div class="itemtip">联系QQ</div>
+                <div class="itemcontent">
+                    <input class="inputtext" name="qq" value="{$content.qq|default=''}" type="text" />
+                </div>
+            </div>
+                        <div class="item">
+				<div class="itemtip">简介</div>
+				<div class="itemcontent">
+                                        <textarea class="introtext" name="remark" id="remark" cols="30" rows="10">{$content.remark|default=''}</textarea>
+				</div>
+			</div>
+                        <div class="item">
+				<div class="itemtip">寄语</div>
+				<div class="itemcontent">
+                                        <textarea class="introtext" name="snippet" id="snippet" cols="30" rows="10">{$content.snippet|default=''|nl2br}</textarea>
+				</div>
+			</div>
+
+                        <div class="item">
+                <div class="itemtip">逗币数</div>
+                <div class="itemcontent">
+                    <input class="inputtext" name="score" value="{$score|default='0'}" type="text"/>
+                </div>
+            </div>
+			
+                        <div class="item">
+				<div class="itemtip">访问数</div>
+				<div class="itemcontent">
+					<input class="inputtext" name="visit" value="{$content.visit|default='0'}" type="text" readonly="readonly" />readonly
+				</div>
+			</div>
+                        <div class="item">
+				<div class="itemtip">状态</div>
+				<div class="itemcontent">
+                                    <input type="radio" name="status" value="0"<?php if(isset($content['status']) && $content['status']==0): ?> checked="checked"<?php endif; ?>>
+                                    启用
+                                    <input type="radio" name="status" value="1"<?php if(!isset($content['status']) || $content['status']==1): ?> checked="checked"<?php endif; ?>>
+                                    禁用
+				</div>
+			</div>
+                        
+			<div class="item buttonline">
+				<input class="submitbtn" value="提交" type="submit">
+			</div>
+		</form>
+	</div>
+    <div class="formwrap">
+        <div class="item">
+            <div class="itemtip">逗币记录</div>
+        </div>
+        <div class="funnylist itemlist">
+            <table class="funnytablelist list">
+                <tr>
+                    <td width="23%">时间</td>
+                    <td width="15%">分值</td>
+                    <td width="15%">内容</td>
+                    <td width="5%">订单号</td>
+                </tr>
+                <volist name="score_detail" id="v">
+                    <tr id="funny{$v.id}">
+                        <td>{$v.created_at}</td>
+                        <td>{$v.score}</td>
+                        <td>{$v.content}</td>
+                        <td>{$v.order_id}</td>
+                    </tr>
+                </volist>
+            </table>
+        </div>
+    </div>
+</div>
+<script type="text/javascript">
+    $(function(){
+        CKEDITOR.config.height=300;
+        $('#snippet').ckeditor();
+    });
+</script>

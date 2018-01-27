@@ -1,0 +1,70 @@
+<div class="wrap">
+	<div class="categories">
+		<form id="filterform" onsubmit="return false" action="{:U('User/arclist')}" method="post" target="_self">
+			<label class="formtip">搜索</label>
+			<input name="sw" type="text" class="inputtext searchinput" style="width:120px;" value="{$sw}"/>
+			<label class="formtip">条目</label>
+			<input name="limit" type="text" class="inputtext searchinput" style="width:30px;" value="{$limit}" />
+                        <input type="button" id="btn_search" style="width:60px;" value="搜索" />
+                        <input name="radio" type="checkbox" style="width:30px;" value="0" <if condition="($ord eq 0)"> checked="checked"</if> onclick="document.location.href='{:U('User/arclist?ord=')}0';" />按创建时间查看
+                        <input name="radio" type="checkbox" style="width:30px;" value="1" <if condition="($ord eq 1)"> checked="checked"</if> onclick="document.location.href='{:U('User/arclist?ord=')}1';" />按更改时间查看
+		</form>
+	</div>
+	<div class="dryhumorlist itemlist">
+		<table class="dryhumortablelist list">
+			<tr>
+				<td width="2%">id</td>
+				<td width="7%">uid</td>
+                                <td width="10%">用户名/昵称</td>
+                                <td width="3%">状态</td>
+                                <td width="10%">简介</td>
+                                <td>寄语</td>
+                                <td>联系QQ</td>
+				<td width="6%">创建时间</td>
+				<td width="6%">更改时间</td>
+				<td width="4%">操作</td>
+			</tr>
+			<foreach name="list" item="v">
+				<tr id="tr{$v.id}" aid="{$v.id}">
+					<td class="narrow">{$v.id}</td>
+					<td><a class="editbtn" href="{:U('User/arccontent?id=')}{$v.id}">{$v.uid}</a></td>
+                                        <td>{$v.username}/{$v.nickname}</td>
+                                        <td><if condition="$v['status']==0">启用<else />禁用</if></td>
+                                        <td>{$v.remark}</td>
+                                        <td>{$v.snippet}</td>
+                                        <td>{$v.qq}</td>
+                                        <td class="narrow"<if condition="($time-$v['addtime'] lt 259200)"> style="color:red;"</if>>{$v.addtime|date="Y-m-d",###}</td>
+					<td class="narrow"<if condition="($time-$v['uptime'] lt 259200)"> style="color:red;"</if>>{$v.uptime|date="Y-m-d",###}</td>
+					<td>
+						<a class="btn" href="{:U('User/arccontent?id=')}{$v.id}">修改</a>
+					</td>
+				</tr>
+			</foreach>
+		</table>
+		<script type="text/javascript">
+			(function(){
+                                function submitSearch(){
+                                    var $form = $('#filterform'), $items = $form.find('[name]');
+                                    var url = $form.attr('action'), params = [];
+                                    for(var i = 0; i < $items.length; i ++){
+                                            params.push($items.eq(i).attr('name') + '=' + $items.eq(i).val());
+                                    }
+                                    var sw = $('.searchinput').val();
+                                    location.href = url + '&' + params.join('&');
+                                }
+				$('.searchinput').keyup(function(e){
+					if(e.keyCode == 13){
+                                            submitSearch();
+					}
+					return false;
+				});
+                                $("#btn_search").click(function(){
+                                    submitSearch();
+                                });
+			})();
+		</script>
+	</div>
+	<div class="pagelist">
+		{$pagelist}
+	</div>
+</div>

@@ -24,6 +24,32 @@ class AdminsModel extends Model{
     }
 
     /**
+     * 检查sms码是否是正确的。
+     * @param $code
+     * @param $username
+     * @return bool
+     */
+    public function smsCodeVerify($code, $username){
+        $ip = get_client_ip();
+        if(!$code){
+            return false;
+        }
+        $mcverifytimekey = md5('smscodeverifytime' . $username);
+        $mccodekey = md5('smscodekey' . $username);
+        $verifytime = S($mcverifytimekey);
+        if($verifytime > 4){
+            return false;
+        }
+        S($mcverifytimekey, $verifytime + 1, array('expire' => 1800));
+        $smscode = S($mccodekey);
+        if(intval($smscode) === intval($code)){
+            S($mccodekey, null);
+            return true;
+        }
+        return false;
+    }
+
+    /**
      * 验证密码是否正确
      * @param $username
      * @param $password
