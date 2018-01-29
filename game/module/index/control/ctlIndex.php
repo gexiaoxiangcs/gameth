@@ -12,7 +12,6 @@ class ctlIndex extends \Base\ctlBase {
      */
     public function __construct(){
         parent::__construct();
-        $this->assign('navindex', 0);
     }
 
     /**
@@ -20,6 +19,7 @@ class ctlIndex extends \Base\ctlBase {
      */
 
     public function funcIndex(){
+
         $this->display('index/index');
     }
 }

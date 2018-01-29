@@ -12,6 +12,7 @@ class ImgTool {
         $default = array(
             'maxSize'    =>    4194304,
             'rootPath'   =>    APP_PATH . 'Home/Uploads/',
+            'img_url'    =>    ,
             'savePath'   =>    '',
             'saveName'   =>    array('uniqid',''),
             'exts'       =>    array('jpg', 'gif', 'png', 'jpeg'),
@@ -75,7 +76,8 @@ class ImgTool {
         if(!$writesucc){
             return false;
         }else{
-            return $picname;
+
+            return ;
         }
     }
     

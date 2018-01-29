@@ -1,0 +1,109 @@
+<div class="wrap datawrap">
+    <div class="formwrap">
+        <form class="dryhumorform" action="{:U('GameCenter/save')}" method="post">
+            <div class="item">
+                <div class="itemtip">游戏名：</div>
+                <div class="itemcontent">
+                    <input class="inputtext" name="title" type="text" />
+                </div>
+            </div>
+
+            <div class="item">
+                <div class="itemtip">游戏链接：</div>
+                <div class="itemcontent">
+                    <input class="inputtext" name="url" type="text" />
+                </div>
+            </div>
+
+            <div class="item">
+                <div class="itemtip">图片</div>
+                <div class="itemcontent">
+                    <input id="img" type="text" name="img" class="inputtext" value="" />
+                    <input id="uploadimgs" type="file" name="uploadimgs" multiple="multiple" style="width:190px;" />
+
+                    <input id="picSubmit" type="submit" name="Submit" value="上传" class="submitbtn" onclick="return false;" />
+                </div>
+            </div>
+            <div class="item">
+                <div class="itemtip">内容：</div>
+                <div class="itemcontent">
+                    <textarea class="introtext" name="content"></textarea>
+                </div>
+            </div>
+
+            <div class="item">
+                <div class="itemtip">排序：</div>
+                <div class="itemcontent">
+                    <input class="inputtext" name="url" type="text" />
+                </div>
+            </div>
+
+            <div class="item buttonline">
+                <input name="Submit" class="submitbtn" value="提交" type="submit">
+            </div>
+        </form>
+    </div>
+    <script type="text/javascript" src="/js/libs/html5ajaxupload.js"></script>
+    <script type="text/javascript">
+        var params = {
+            fileInput: $("#uploadimgs").get(0),
+            upButton: $("#picSubmit").get(0),
+            url: "{:U('GameCenter/uploadImg')}",
+            getUrl: function(){
+                var posturl="{:U('GameCenter/uploadImg')}";
+                if(posturl.indexOf('?') !== -1){
+                    posturl += "&";
+                }else{
+                    posturl += "?";
+                }
+                posturl += "water="+$("#water").val();
+                return posturl;
+            },
+            filter: function(files) {
+                var arrFiles = [];
+                var accepttyperegx = /^[^&]+\.(jpg|png|gif|jpeg)$/;
+                for (var i = 0, file; file = files[i]; i++) {
+                    if(!accepttyperegx.test(file.name)){
+                        alert('文件"' + file.name + '"文件名称请不要包含&号');
+                        continue;
+                    }
+                    if (file.type.indexOf("image") !== -1) {
+                        if (file.size >= 4096000) {
+                            alert('您这张"' + file.name + '"图片大小过大，应小于4M');
+                            continue;
+                        }
+                    }
+                    arrFiles.push(file);
+                }
+                return arrFiles;
+            },
+            onSelect: function(files) {
+
+            },
+            onDelete: function(file) {
+                $("#uploadList_" + file.index).fadeOut();
+            },
+            onDragOver: function() {
+                $(this).addClass("upload_drag_hover");
+            },
+            onDragLeave: function() {
+                $(this).removeClass("upload_drag_hover");
+            },
+            onProgress: function(file, loaded, total) {
+
+            },
+            onSuccess: function(file, response) {
+                var data = JSON.parse(response);
+                $("#img").val(data.url);
+            },
+            onFailure: function(file, response) {
+                alert("上传失败");
+            },
+            onComplete: function() {
+                alert("当前图片全部上传完毕");
+            }
+        };
+        Html5AjaxUpload = $.extend(Html5AjaxUpload, params);
+        Html5AjaxUpload.init();
+    </script>
+</div>
